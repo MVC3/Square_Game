@@ -1,0 +1,86 @@
+<html>
+<head>
+<script src="jquery.js"></script>
+<script>
+$(document).ready(function()
+{
+$("#p1game").hide();
+$("#p2game").hide();
+$("input:button[id=p1]").click(function()
+	{
+	$("#p1game").show(50);
+	$("#p2game").hide();
+	$("input:button[id=nbutton]").click(function()
+		{
+			$(this).val("X");
+		});
+	$.WhoWon();
+	//alert("I am at p1");
+	});
+$("input:button[id=p2]").click(function()
+	{
+	$("#p1game").hide();
+	$("#p2game").show(50);
+	$("input:button[id=nbutton]").click(function()
+		{
+		$(this).val("O");
+		//$.WhoWon();
+		});	
+	$.WhoWon();
+	});
+	
+		$.WhoWon = function()
+		{
+		var boxval1=$("input:button[class=b1]").val();
+		var boxval2=$("input:button[class=b2]").val();
+		var boxval3=$("input:button[class=b3]").val();
+		var boxval4=$("input:button[class=b4]").val();
+		var boxval5=$("input:button[class=b5]").val();
+		var boxval6=$("input:button[class=b6]").val();
+		var boxval7=$("input:button[class=b7]").val();
+		var boxval8=$("input:button[class=b8]").val();
+		var boxval9=$("input:button[class=b9]").val();
+		//alert(boxval1+boxval2+boxval3+boxval4+boxval5+boxval6+boxval7+boxval8+boxval9);
+
+		if ((boxval1==boxval2 && boxval1==boxval3 && (boxval1=="X" || boxval1=="O")) || (boxval1==boxval4 && boxval1==boxval7 && (boxval1=="X" || boxval1=="O")) || (boxval1==boxval5 && boxval1==boxval9 && (boxval1=="X" || boxval1=="O")) || (boxval3==boxval6 && boxval3==boxval9 && (boxval3=="X" || boxval3=="O")) || (boxval3==boxval5 && boxval3==boxval7 && (boxval3=="X" || boxval3=="O")) || (boxval7==boxval8 && boxval7==boxval9 && (boxval7=="X" || boxval7=="O")) ||(boxval4==boxval5 && boxval4==boxval6 && (boxval4=="X" || boxval4=="O"))|| (boxval2==boxval5 && boxval2==boxval8 && (boxval2=="X" || boxval2=="O")))
+		{
+			if (boxval1=="X" || boxval2 =="X" || boxval3 =="X" ||boxval4 =="X" ||boxval7 =="X")
+				{
+				alert("Player 1 won the game");
+				}
+			else if (boxval1=="O" || boxval2 =="O" || boxval3 =="O" ||boxval4 =="O" ||boxval7 =="O")
+				{
+				alert("Player 2 won the game");
+				}
+			}
+		}
+});
+</script>
+</head>
+
+<body>
+<table id="game" border="3" align="center" height="100px" width="100px" bgcolor="#F000FF" >
+<tr id="tr1" align="center"> 
+<td type="tabledata" id="td"><input id="nbutton" class="b1" type="button" value="  " name="nbutton"> </td>
+<td type="tabledata" id="td"><input id="nbutton"  class="b2" type="button" value="  " name="nbutton"></td>
+<td type="tabledata" id="td"><input id="nbutton" class="b3" type="button" value="  " name="nbutton"> </td>
+</tr>
+<tr id="tr" align="center"> 
+<td type="tabledata" id="td"><input id="nbutton" class="b4" type="button" value="  " name="nbutton"> </td>
+<td type="tabledata" id="td"> <input id="nbutton" class="b5" type="button" value="  " name="nbutton"></td>
+<td type="tabledata" id="td"> <input id="nbutton" class="b6" type="button" value="  " name="nbutton"></td>
+</tr>
+<tr id="tr" align="center"> 
+<td type="tabledata" id="td"> <input id="nbutton" class="b7" type="button" value="  " name="nbutton"></td>
+<td type="tabledata" id="td"> <input id="nbutton" class="b8" type="button" value="  " name="nbutton"></td>
+<td type="tabledata" id="td"> <input id="nbutton" class="b9" type="button" value="  " name="nbutton"></td>
+</tr>
+</table>
+<center>
+<input id="p1" type="button" name="player1" value="Player1">
+<input id="p2" type="button" name="player2" value="Player2">
+<p id="p1game"> Player 1 turn </p>
+<p id="p2game"> Player 2 turn </p>
+</center>
+</body>
+</html>
